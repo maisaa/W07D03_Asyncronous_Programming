@@ -11,4 +11,13 @@ const readFile = () => {
     })
 };
 
-readFile();
+// readFile();
+
+const writeFile = () => {
+    fs.writeFile("text.txt","A new file has been created",(err) => {
+        if (err) throw err;
+        console.log("The file has been saved");
+    });
+}
+
+writeFile();
