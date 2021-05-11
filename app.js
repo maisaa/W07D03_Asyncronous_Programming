@@ -1,6 +1,6 @@
 const fs = require("fs");
 const axios = require("axios");
-const { response } = require("express");
+const { response, json } = require("express");
 const { constants } = require("buffer");
 
 
@@ -83,3 +83,19 @@ const copyMFile =  (fileName) => {
 }
 // copyMFile("./data.txt")
 
+const newPost = JSON.stringify({
+    id: 1,
+    title: "Updated Title",
+    body: "Updated body",
+    userId: 1,
+});
+
+const createPost = async (post) =>{
+    let response =await axios({
+        method: 'post',
+        url: 'https://jsonplaceholder.typicode.com/posts',
+        data: post
+    });
+    console.log(response.data)
+};
+createPost(newPost)
