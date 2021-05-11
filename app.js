@@ -1,6 +1,7 @@
 const fs = require("fs");
 const axios = require("axios");
 const { response } = require("express");
+const { constants } = require("buffer");
 
 
 const readFile = () => {
@@ -47,3 +48,38 @@ const getPostAsync = async (id) =>{
 }
 
 // getPostAsync(1)
+
+const appendToFile = (data) => {
+    fs.appendFile("./data.txt",data, (err) =>{
+        if(err) throw err;
+        console.log(data)
+    })
+}
+
+// appendToFile(` hi from appendToFile`)
+
+// const copyMFile = async (fileName) => {
+//     try {
+//         await fs.copyFile(fileName,'./copy_of_data.txt');
+        
+//     } catch  {
+//         console.log("The file could not be copied")
+        
+//     }
+// }
+// copyMFile("./data.txt")
+
+const copyMFile =  (fileName) => {
+
+    let callback = (err) =>{
+        if (err) throw err;
+        //
+        console.log("The file has been copied")
+    }
+
+    fs.copyFile(fileName,'./maisaa.txt', callback)
+
+
+}
+// copyMFile("./data.txt")
+
