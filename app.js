@@ -1,5 +1,6 @@
 const fs = require("fs");
 const axios = require("axios");
+const { response } = require("express");
 
 
 const readFile = () => {
@@ -20,4 +21,29 @@ const writeFile = () => {
     });
 }
 
-writeFile();
+// writeFile();
+
+const getPost = (id) => {
+
+    axios
+    .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    .then((response) => {
+        console.log(response.data);
+    })
+    .catch ((err) => {
+        throw err
+    })
+}
+// getPost(1);
+// getPost(100);
+
+const getPostAsync = async (id) =>{
+    try {
+        const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        console.log("getPostAsync :",response.data);
+    } catch (err) {
+        throw err;
+    }
+}
+
+// getPostAsync(1)
