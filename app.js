@@ -119,6 +119,16 @@ updatePost(1, newPost2);
 
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //============================================================
-const getUsers = () =>{
-    
+const getUsers = async() =>{
+    try {
+        const response = await axios.get("https://jsonplaceholder.typicode.com/users")
+        console.log("Practice...5....getUsers :", response.data)
+    } catch {
+        console.log("something went wrong xxxxxxx")
+    }
 }
+getUsers();
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//============================================================
+
