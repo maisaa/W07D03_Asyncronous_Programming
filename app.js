@@ -131,4 +131,14 @@ getUsers();
 
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //============================================================
+const saveUsers = async () =>{
+    let users = await axios.get("https://jsonplaceholder.typicode.com/users")
+    fs.writeFile("users.txt", JSON.stringify(users.data) , (err) => {
+        if (err) throw err;
+        //
+        console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        // console.log("Practice...6....Users exist in users.txt :");
+    });
+}
 
+saveUsers()
